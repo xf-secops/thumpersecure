@@ -1,8 +1,8 @@
 {
-  "last_updated_utc": "2026-08-22T06:03:39.954Z",
+  "last_updated_utc": "2026-08-23T06:04:30.311Z",
   "stats": {
-    "tools_count": 18,
-    "stars_total": 733,
+    "tools_count": 19,
+    "stars_total": 734,
     "featured_count": 4,
     "followers": 86
   },
@@ -44,8 +44,8 @@
       "name": "Spin",
       "description": "🕸️  SpinWeb Browser - A full featured desktop application for OSINT, security, and extreme privacy. Next Generation Features and Advanced OSINT Tools. New Jessica Jones Version!",
       "topics": [],
-      "stars": 92,
-      "last_updated": "2026-08-20T02:57:56Z",
+      "stars": 93,
+      "last_updated": "2026-08-23T02:04:49Z",
       "language": "JavaScript",
       "homepage": "https://thumpersecure.github.io/Spin/",
       "html_url": "https://github.com/thumpersecure/Spin",
@@ -259,10 +259,21 @@
       "description": "Daily append-only change log of Philadelphia Active/Expired rental licenses (public open data from phl.carto.com). Proof-of-concept history tracker.",
       "topics": [],
       "stars": 0,
-      "last_updated": "2026-08-21T21:40:10Z",
+      "last_updated": "2026-08-22T18:42:09Z",
       "language": "HTML",
       "homepage": "https://thumpersecure.github.io/phl-rental-license-log/",
       "html_url": "https://github.com/thumpersecure/phl-rental-license-log",
+      "featured": false
+    },
+    {
+      "name": "scanline-glitch",
+      "description": "OSINT & SEO tool by THUMPERSECURE",
+      "topics": [],
+      "stars": 0,
+      "last_updated": "2026-08-22T18:46:39Z",
+      "language": "JavaScript",
+      "homepage": "https://thumpersecure.github.io/scanline-glitch/",
+      "html_url": "https://github.com/thumpersecure/scanline-glitch",
       "featured": false
     }
   ]
