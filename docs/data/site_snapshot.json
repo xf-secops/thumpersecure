@@ -1,8 +1,8 @@
 {
-  "last_updated_utc": "2026-08-23T06:04:30.311Z",
+  "last_updated_utc": "2026-08-24T06:08:36.283Z",
   "stats": {
     "tools_count": 19,
-    "stars_total": 734,
+    "stars_total": 733,
     "featured_count": 4,
     "followers": 86
   },
@@ -60,8 +60,8 @@
         "phone-number",
         "telephone-number"
       ],
-      "stars": 83,
-      "last_updated": "2026-07-29T23:30:22Z",
+      "stars": 82,
+      "last_updated": "2026-08-24T00:32:28Z",
       "language": "JavaScript",
       "homepage": null,
       "html_url": "https://github.com/thumpersecure/xTELENUMSINT",
@@ -200,7 +200,7 @@
         "philadelphia"
       ],
       "stars": 2,
-      "last_updated": "2026-08-16T23:12:36Z",
+      "last_updated": "2026-08-23T22:24:50Z",
       "language": "HTML",
       "homepage": "https://4philly.net/",
       "html_url": "https://github.com/thumpersecure/4philly",
@@ -259,7 +259,7 @@
       "description": "Daily append-only change log of Philadelphia Active/Expired rental licenses (public open data from phl.carto.com). Proof-of-concept history tracker.",
       "topics": [],
       "stars": 0,
-      "last_updated": "2026-08-22T18:42:09Z",
+      "last_updated": "2026-08-23T18:25:09Z",
       "language": "HTML",
       "homepage": "https://thumpersecure.github.io/phl-rental-license-log/",
       "html_url": "https://github.com/thumpersecure/phl-rental-license-log",
