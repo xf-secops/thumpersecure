@@ -1,5 +1,5 @@
 {
-  "last_updated_utc": "2026-08-27T08:57:51.979Z",
+  "last_updated_utc": "2026-08-28T09:00:27.711Z",
   "stats": {
     "tools_count": 20,
     "stars_total": 735,
@@ -259,9 +259,9 @@
       "description": "Retro MediaWiki-style static wiki on forensic accounting & OSINT — built from a 7-source review + verified 2024-2026 research.",
       "topics": [],
       "stars": 0,
-      "last_updated": "2026-08-27T03:58:09Z",
+      "last_updated": "2026-08-28T00:56:29Z",
       "language": "HTML",
-      "homepage": null,
+      "homepage": "https://thumpersecure.github.io/fraud-osint/",
       "html_url": "https://github.com/thumpersecure/fraud-osint",
       "featured": false
     },
@@ -270,7 +270,7 @@
       "description": "Daily append-only change log of Philadelphia Active/Expired rental licenses (public open data from phl.carto.com). Proof-of-concept history tracker.",
       "topics": [],
       "stars": 0,
-      "last_updated": "2026-08-26T08:31:23Z",
+      "last_updated": "2026-08-27T19:17:36Z",
       "language": "HTML",
       "homepage": "https://thumpersecure.github.io/phl-rental-license-log/",
       "html_url": "https://github.com/thumpersecure/phl-rental-license-log",
