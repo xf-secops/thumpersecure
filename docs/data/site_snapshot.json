@@ -1,8 +1,8 @@
 {
-  "last_updated_utc": "2026-08-28T09:00:27.711Z",
+  "last_updated_utc": "2026-08-29T06:02:18.113Z",
   "stats": {
     "tools_count": 20,
-    "stars_total": 735,
+    "stars_total": 729,
     "featured_count": 4,
     "followers": 86
   },
@@ -179,17 +179,6 @@
       "featured": false
     },
     {
-      "name": "quevidkit",
-      "description": "📽️ quevidkit is a toolkit providing forensic video‑tampering analysis. It consists of a Python CLI/REST backend and a simple web front‑end that runs in the browser or connects to a FastAPI server.",
-      "topics": [],
-      "stars": 7,
-      "last_updated": "2026-07-23T20:11:54Z",
-      "language": "Python",
-      "homepage": "https://thumpersecure.github.io/quevidkit/",
-      "html_url": "https://github.com/thumpersecure/quevidkit",
-      "featured": false
-    },
-    {
       "name": "4philly",
       "description": "4philly.net - Know before you sign! Look up tool for Philadelphia property records —  Easily checks licenses,  violations, and 311 complaints — pulled live from the city’s own data. Eclipse and Carto are cross-checked side by side… into one APP you can trust. Free, open-source, made by tenants.",
       "topics": [
@@ -240,6 +229,17 @@
       "featured": false
     },
     {
+      "name": "quevidkit",
+      "description": "📽️ quevidkit is a toolkit providing forensic video‑tampering analysis. It consists of a Python CLI/REST backend and a simple web front‑end that runs in the browser or connects to a FastAPI server.",
+      "topics": [],
+      "stars": 1,
+      "last_updated": "2026-08-29T03:29:18Z",
+      "language": "Python",
+      "homepage": "https://thumpersecure.github.io/quevidkit/",
+      "html_url": "https://github.com/thumpersecure/quevidkit",
+      "featured": false
+    },
+    {
       "name": "zweather",
       "description": "⚡️Zweather is the honest weather forecast app that shows you the weather forecast and what prior forecasts have changed. ",
       "topics": [
@@ -270,7 +270,7 @@
       "description": "Daily append-only change log of Philadelphia Active/Expired rental licenses (public open data from phl.carto.com). Proof-of-concept history tracker.",
       "topics": [],
       "stars": 0,
-      "last_updated": "2026-08-27T19:17:36Z",
+      "last_updated": "2026-08-28T12:08:25Z",
       "language": "HTML",
       "homepage": "https://thumpersecure.github.io/phl-rental-license-log/",
       "html_url": "https://github.com/thumpersecure/phl-rental-license-log",
