@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const phoneInput = document.getElementById('phoneInput');
   const countryCode = document.getElementById('countryCode');
+  const searchEngine = document.getElementById('searchEngine');
   const searchBtn = document.getElementById('searchBtn');
   const formatsPreview = document.getElementById('formatsPreview');
   const formatsList = document.getElementById('formatsList');
@@ -24,11 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
     return input.replace(/\D/g, '');
   }
 
-  // Generate 10 search formats based on the phone number
-  // Example: 555-555-1234 with country code 1
+  // Generate the base search formats based on the phone number.
+  // US (country === '1') uses the classic 3-3-4 (area/exchange/subscriber)
+  // grouping; every other country uses generic international-shaped formats
+  // that do NOT force a US-style split.
   function generateFormats(phoneDigits, country) {
-    // Ensure we have at least 10 digits for US format
-    // If less, pad or handle gracefully
+    if (country === '1') {
+      return generateUSFormats(phoneDigits, country);
+    }
+    return generateIntlFormats(phoneDigits, country);
+  }
+
+  // US-SPECIFIC formats: assumes the North American 3-3-4 split.
+  // Example: 555-555-1234 with country code 1
+  function generateUSFormats(phoneDigits, country) {
     let areaCode, exchange, subscriber;
 
     if (phoneDigits.length >= 10) {
@@ -52,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fullNumber = areaCode + exchange + subscriber;
     const fullWithCountry = country + fullNumber;
 
-    // 10 formats matching the user's image
+    // 10 formats matching the user's image (all US-specific grouping)
     return [
       {
         format: `+${fullWithCountry}`,
@@ -95,6 +105,94 @@ document.addEventListener('DOMContentLoaded', () => {
         description: 'Digits only (parentheses + quoted)'
       }
     ];
+  }
+
+  // GENERIC international formats: no forced 3-3-4 grouping. We keep the full
+  // national number intact and vary quoting / country-code prefixing, which is
+  // the pragmatic convention for non-NANP numbers of unknown length.
+  function generateIntlFormats(phoneDigits, country) {
+    // Strip a leading country code if the user already typed it in.
+    let national = phoneDigits;
+    if (national.startsWith(country) && national.length > country.length) {
+      national = national.slice(country.length);
+    }
+
+    const withCountry = country + national;
+
+    // Generic, country-agnostic formats (no 3-3-4 assumption).
+    return [
+      {
+        format: `+${withCountry}`,
+        description: 'International format (unquoted)'
+      },
+      {
+        format: `"+${withCountry}"`,
+        description: 'International format (quoted)'
+      },
+      {
+        format: `"+${country} ${national}"`,
+        description: 'International w/ spaced country code (quoted)'
+      },
+      {
+        format: `+${country} ${national}`,
+        description: 'International w/ spaced country code (unquoted)'
+      },
+      {
+        format: `${national}`,
+        description: 'National number (unquoted)'
+      },
+      {
+        format: `"${national}"`,
+        description: 'National number (quoted)'
+      },
+      {
+        format: `(${national})`,
+        description: 'National number (parentheses)'
+      },
+      {
+        format: `("${national}")`,
+        description: 'National number (parentheses + quoted)'
+      },
+      {
+        format: `"00${withCountry}"`,
+        description: 'International 00-prefix dialing (quoted)'
+      },
+      {
+        format: `00${withCountry}`,
+        description: 'International 00-prefix dialing (unquoted)'
+      }
+    ];
+  }
+
+  // Search-engine URL builders (query already un-encoded here).
+  const ENGINE_URLS = {
+    google: 'https://www.google.com/search?q=',
+    duckduckgo: 'https://duckduckgo.com/?q=',
+    bing: 'https://www.bing.com/search?q='
+  };
+
+  function getEngine() {
+    return (searchEngine && ENGINE_URLS[searchEngine.value]) ? searchEngine.value : 'google';
+  }
+
+  // Build the full list of queries to run: the base phone formats, plus any
+  // opted-in site: presets applied to each format (additive/optional).
+  function buildQueries(formats) {
+    const queries = formats.map(f => ({ query: f.format, description: f.description }));
+
+    const sites = Array.from(document.querySelectorAll('.site-preset:checked'))
+      .map(cb => cb.value);
+
+    sites.forEach(site => {
+      formats.forEach(f => {
+        queries.push({
+          query: `site:${site} ${f.format}`,
+          description: `${site} - ${f.description}`
+        });
+      });
+    });
+
+    return queries;
   }
 
   // Display formats in the preview section
@@ -151,12 +249,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (progressText) progressText.textContent = `${completed} / ${total} searches completed`;
   }
 
-  // Perform Google search for a format
+  // Perform a search for a single query on the selected engine.
   async function performSearch(format, index) {
     updateFormatStatus(index, 'searching');
 
     const query = encodeURIComponent(format);
-    const searchUrl = `https://www.google.com/search?q=${query}`;
+    const searchUrl = `${ENGINE_URLS[getEngine()]}${query}`;
 
     try {
       // Open search in new tab
@@ -179,12 +277,23 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error(`Search error for format ${index}:`, error);
       updateFormatStatus(index, 'error');
+      // Record the actual failure so the summary counts real failures
+      // rather than inferring them by subtraction.
+      searchResults.push({
+        index,
+        format,
+        tabId: null,
+        url: searchUrl,
+        status: 'error',
+        error: error.message
+      });
       return { success: false, error: error.message };
     }
   }
 
-  // Run all searches sequentially with delay
-  async function runAllSearches(formats) {
+  // Run all queries sequentially with delay. `queries` is a list of
+  // { query, description } objects from buildQueries().
+  async function runAllSearches(queries) {
     searchResults = [];
     currentSearchIndex = 0;
 
@@ -193,33 +302,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    for (let i = 0; i < formats.length; i++) {
-      await performSearch(formats[i].format, i);
-      updateProgress(i + 1, formats.length);
+    for (let i = 0; i < queries.length; i++) {
+      await performSearch(queries[i].query, i);
+      updateProgress(i + 1, queries.length);
 
       // Small delay between searches to avoid rate limiting
-      if (i < formats.length - 1) {
+      if (i < queries.length - 1) {
         await delay(500);
       }
     }
 
     // Show summary
-    showSummary(formats);
+    showSummary(queries);
   }
 
   // Display search summary
-  function showSummary(formats) {
+  function showSummary(queries) {
+    const total = queries.length;
     const successCount = searchResults.filter(r => r.status === 'opened').length;
-    const errorCount = formats.length - successCount;
+    // Count real failure records instead of inferring by subtraction.
+    const errorCount = searchResults.filter(r => r.status === 'error').length;
 
     summaryContent.innerHTML = `
       <div class="summary-stat">
         <span class="stat-label">Total Searches</span>
-        <span class="stat-value">${formats.length}</span>
+        <span class="stat-value">${total}</span>
       </div>
       <div class="summary-stat">
         <span class="stat-label">Tabs Opened</span>
-        <span class="stat-value ${successCount === formats.length ? 'high' : 'medium'}">${successCount}</span>
+        <span class="stat-value ${successCount === total ? 'high' : 'medium'}">${successCount}</span>
       </div>
       ${errorCount > 0 ? `
       <div class="summary-stat">
@@ -229,8 +340,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ` : ''}
       <div class="summary-stat">
         <span class="stat-label">Status</span>
-        <span class="stat-value ${successCount === formats.length ? 'high' : 'medium'}">
-          ${successCount === formats.length ? 'Complete' : 'Partial'}
+        <span class="stat-value ${successCount === total ? 'high' : 'medium'}">
+          ${successCount === total ? 'Complete' : 'Partial'}
         </span>
       </div>
     `;
@@ -274,12 +385,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayFormats(formats);
 
+    // Build the full run: base formats + any opted-in site: presets.
+    const queries = buildQueries(formats);
+
     isSearching = true;
     searchBtn.disabled = true;
     searchBtn.innerHTML = '<span class="btn-icon">⏳</span> Searching...';
 
     try {
-      await runAllSearches(formats);
+      await runAllSearches(queries);
     } catch (error) {
       console.error('Search run failed:', error);
       if (progressText) progressText.textContent = 'Search encountered an error. Please try again.';

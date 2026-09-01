@@ -38,6 +38,34 @@
       </select>
     </div>
 
+    <div class="engine-section">
+      <label for="searchEngine">Search Engine</label>
+      <select id="searchEngine">
+        <option value="google" selected>Google</option>
+        <option value="duckduckgo">DuckDuckGo</option>
+        <option value="bing">Bing</option>
+      </select>
+    </div>
+
+    <div class="sites-section">
+      <label>Also search on (site: presets)</label>
+      <div class="sites-list">
+        <label class="site-chip">
+          <input type="checkbox" class="site-preset" value="truepeoplesearch.com">
+          <span>truepeoplesearch.com</span>
+        </label>
+        <label class="site-chip">
+          <input type="checkbox" class="site-preset" value="thatsthem.com">
+          <span>thatsthem.com</span>
+        </label>
+        <label class="site-chip">
+          <input type="checkbox" class="site-preset" value="whitepages.com">
+          <span>whitepages.com</span>
+        </label>
+      </div>
+      <small>Off by default - a normal run stays 10 searches</small>
+    </div>
+
     <button id="searchBtn" class="search-btn">
       <span class="btn-icon">&#128269;</span>
       Search All Formats
@@ -62,7 +90,7 @@
     </div>
 
     <footer>
-      <p>TELESPOT-NUMSINT v1.0</p>
+      <p>TELESPOT-NUMSINT v1.1.0</p>
     </footer>
   </div>
 

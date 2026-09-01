@@ -103,6 +103,55 @@ select:focus {
   border-color: #00d9ff;
 }
 
+.engine-section {
+  margin-bottom: 16px;
+}
+
+.sites-section {
+  margin-bottom: 20px;
+}
+
+.sites-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.site-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0;
+  padding: 8px 10px;
+  background: #0d0d1a;
+  border: 2px solid #2a2a4a;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #aaa;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.site-chip:hover {
+  border-color: #00d9ff;
+  color: #00d9ff;
+}
+
+.site-chip input[type="checkbox"] {
+  accent-color: #00d9ff;
+  cursor: pointer;
+}
+
+.sites-section small {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #666;
+}
+
 .search-btn {
   width: 100%;
   padding: 16px;
