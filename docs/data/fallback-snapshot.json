@@ -1,8 +1,8 @@
 {
-  "last_updated_utc": "2026-09-01T06:03:06.883Z",
+  "last_updated_utc": "2026-09-01T23:20:02.325Z",
   "stats": {
-    "tools_count": 20,
-    "stars_total": 730,
+    "tools_count": 18,
+    "stars_total": 726,
     "featured_count": 4,
     "followers": 87
   },
@@ -34,7 +34,7 @@
         "telephone-number"
       ],
       "stars": 137,
-      "last_updated": "2026-08-29T20:20:28Z",
+      "last_updated": "2026-09-01T23:19:20Z",
       "language": "Python",
       "homepage": null,
       "html_url": "https://github.com/thumpersecure/Telespot",
@@ -78,7 +78,7 @@
         "osint-tools"
       ],
       "stars": 78,
-      "last_updated": "2026-08-30T15:44:34Z",
+      "last_updated": "2026-09-01T23:19:20Z",
       "language": "Rust",
       "homepage": null,
       "html_url": "https://github.com/thumpersecure/Telespotter",
@@ -180,7 +180,7 @@
     },
     {
       "name": "4philly",
-      "description": "4philly.net - Know before you sign! Look up tool for Philadelphia property records —  Easily checks licenses,  violations, and 311 complaints — pulled live from the city’s own data. Eclipse and Carto are cross-checked side by side… into one APP you can trust. Free, open-source, made by tenants.",
+      "description": "🦜 4philly.net - Know before you sign! Look up tool for Philadelphia property records —  Easily checks licenses,  violations, and 311 complaints — pulled live from the city’s own data. Eclipse and Carto are cross-checked side by side… into one APP you can trust. Free, open-source, made by tenants.",
       "topics": [
         "311",
         "inspection",
@@ -189,32 +189,10 @@
         "philadelphia"
       ],
       "stars": 2,
-      "last_updated": "2026-08-30T22:02:07Z",
+      "last_updated": "2026-09-01T23:12:41Z",
       "language": "HTML",
       "homepage": "https://4philly.net/",
       "html_url": "https://github.com/thumpersecure/4philly",
-      "featured": false
-    },
-    {
-      "name": "AoLpAgErThEmE",
-      "description": "An AOL styled theme for the Hak5 pineapple pager.",
-      "topics": [],
-      "stars": 2,
-      "last_updated": "2026-04-15T19:44:35Z",
-      "language": "Python",
-      "homepage": null,
-      "html_url": "https://github.com/thumpersecure/AoLpAgErThEmE",
-      "featured": false
-    },
-    {
-      "name": "EspectreFlashApp",
-      "description": "A simple web app to flash esp’s for espectre easily. Best used with chrome.",
-      "topics": [],
-      "stars": 2,
-      "last_updated": "2026-05-19T18:05:46Z",
-      "language": "JavaScript",
-      "homepage": "https://thumpersecure.github.io/EspectreFlashApp/",
-      "html_url": "https://github.com/thumpersecure/EspectreFlashApp",
       "featured": false
     },
     {
@@ -256,10 +234,10 @@
     },
     {
       "name": "fraud-osint",
-      "description": "Retro MediaWiki-style static wiki on forensic accounting & OSINT — built from a 7-source review + verified 2024-2026 research.",
+      "description": "📝 Retro MediaWiki-style static wiki on forensic accounting & OSINT — built from a 7-source review + verified 2024-2026 research.",
       "topics": [],
       "stars": 0,
-      "last_updated": "2026-08-30T15:45:20Z",
+      "last_updated": "2026-09-01T23:08:32Z",
       "language": "HTML",
       "homepage": "https://thumpersecure.github.io/fraud-osint/",
       "html_url": "https://github.com/thumpersecure/fraud-osint",
@@ -267,10 +245,10 @@
     },
     {
       "name": "phl-rental-license-log",
-      "description": "Daily append-only change log of Philadelphia Active/Expired rental licenses (public open data from phl.carto.com). Proof-of-concept history tracker.",
+      "description": "📊 Daily append-only change log of Philadelphia Active/Expired rental licenses (public open data from phl.carto.com). Proof-of-concept history tracker.",
       "topics": [],
       "stars": 0,
-      "last_updated": "2026-08-31T08:39:18Z",
+      "last_updated": "2026-09-01T23:05:22Z",
       "language": "HTML",
       "homepage": "https://thumpersecure.github.io/phl-rental-license-log/",
       "html_url": "https://github.com/thumpersecure/phl-rental-license-log",
@@ -278,10 +256,10 @@
     },
     {
       "name": "scanline-glitch",
-      "description": "OSINT & SEO tool by THUMPERSECURE",
+      "description": "🪩📀",
       "topics": [],
       "stars": 0,
-      "last_updated": "2026-08-22T18:46:39Z",
+      "last_updated": "2026-09-01T23:06:43Z",
       "language": "JavaScript",
       "homepage": "https://thumpersecure.github.io/scanline-glitch/",
       "html_url": "https://github.com/thumpersecure/scanline-glitch",
